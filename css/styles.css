@@ -1,0 +1,84 @@
+/* Sidebar styling */
+.sidebar {
+    min-width: 300px; /* Minimum width to accommodate text without wrapping */
+    height: 100vh;
+    background-color: #f8f9fa; /* Light grey background color */
+    padding: 20px; /* Add padding for the content inside the sidebar */
+    position: fixed;
+    overflow-y: auto;
+    transition: margin 0.3s; /* Smooth transition for hide/show */
+}
+
+.sidebar.hidden {
+    margin-left: -300px; /* Hide sidebar by moving it out of view */
+}
+
+.sidebar .nav-link {
+    color: #000000; /* Dark text color for better contrast */
+    margin-bottom: 10px;
+    white-space: nowrap; /* Prevent text wrapping */
+    padding: 10px 15px; /* Add padding for better spacing */
+}
+
+.sidebar .nav-link.active {
+    background-color: #6c757d; /* Darker grey for active state */
+    color: #ffffff;
+}
+
+.sidebar .nav-link:hover {
+    background-color: #5a6268; /* Darker shade of grey for hover state */
+    color: #ffffff;
+}
+
+/* Main content styling */
+.main-content {
+    margin-left: 300px; /* Adjust margin to account for sidebar width */
+    padding: 20px;
+    transition: margin 0.3s; /* Smooth transition for content when sidebar is hidden */
+}
+
+.main-content.expanded {
+    margin-left: 0; /* Expand content area when sidebar is hidden */
+}
+
+/* Toggle icon styling */
+#toggle-sidebar-icon {
+    position: fixed;
+    top: 20px;
+    left: 20px; /* Fixed position on the top left of the sidebar */
+    z-index: 1001;
+    cursor: pointer;
+}
+
+/* Icon container inside the sidebar */
+.icon-container {
+    display: flex;
+    justify-content: flex-end; /* Align home icon to the right */
+    align-items: center;
+}
+
+.icon-container a {
+    color: inherit; /* Inherit color to keep consistent with other icon */
+    text-decoration: none; /* Remove underline */
+    margin-right: 10px; /* Add some spacing from the right edge */
+}
+
+/* Additional spacing for sidebar items */
+.sidebar-nav {
+    margin-top: 40px; /* Increase top margin to add spacing between icons and nav items */
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .sidebar {
+        width: 100%;
+        height: auto;
+        position: relative;
+    }
+    .main-content {
+        margin-left: 0;
+    }
+    #toggle-sidebar-icon {
+        left: 20px; /* Adjust position on smaller screens */
+    }
+}
