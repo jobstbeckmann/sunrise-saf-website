@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Map mit Tippy.js</title>
+    <link href="https://unpkg.com/tippy.js@6/themes/light.css" rel="stylesheet">
+    <script src="https://unpkg.com/tippy.js@6/dist/tippy-bundle.umd.min.js"></script>
+    <style>
+        .tippy-tooltip {
+            background-color: #333;
+            color: #fff;
+            padding: 5px;
+            border-radius: 3px;
+            font-size: 12px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Bild mit Tippy.js und Tooltips</h1>
+    <img src="/images/sunrise.png" usemap="#image-map" alt="Bildbeschreibung" id="map-image">
+
+    <map name="image-map">
+        <area shape="rect" coords="34,44,270,350" href="#" alt="Bereich 1" data-tippy-content="Tooltip für Bereich 1">
+        <area shape="circle" coords="130,136,60" href="#" alt="Bereich 2" data-tippy-content="Tooltip für Bereich 2">
+        <area shape="poly" coords="50,100,200,200,300,150" href="#" alt="Bereich 3" data-tippy-content="Tooltip für Bereich 3">
+    </map>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('Document loaded');
+            tippy('area', {
+                content: (reference) => {
+                    console.log('Setting content for:', reference);
+                    return reference.getAttribute('data-tippy-content');
+                },
+                placement: 'top',
+                animation: 'fade',
+                theme: 'light'
+            });
+        });
+    </script>
+</body>
+</html>

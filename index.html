@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meine Bootstrap-Webseite</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        /* Hintergrundfarbe des Offcanvas-Headers */
+        .offcanvas-header {
+            background-color: #ffffff; /* Hier die gewünschte Hintergrundfarbe setzen */
+            color: #000000; /* Textfarbe im Header */
+            border-bottom: 2px solid #003399; /* Trennlinie hinzufügen */
+        }
+
+        /* Hintergrundfarbe der Offcanvas-Navigation */
+        .offcanvas-start .offcanvas-body {
+            background-color: #e7e4e4 !important; /* Verwendung von !important zur Priorisierung */
+            color: #ffffff; /* Textfarbe */
+        }
+
+        /* Flexbox-Anordnung für die Offcanvas-Navigation */
+        .offcanvas-body {
+            display: flex;
+            flex-direction: column; /* Vertikale Anordnung */
+        }
+
+        /* Navigationselemente */
+        .nav-item {
+            width: 100%; /* Breite auf 100% setzen */
+            margin-bottom: 5px; /* Abstand zwischen den Elementen */
+        }
+
+        /* Entfernen des unteren Abstands des letzten Elements */
+        .nav-item:last-child {
+            margin-bottom: 0;
+        }
+
+        /* Stil für die Links */
+        .nav-link-custom {
+            font-size: 18px; /* Schriftgröße anpassen */
+            padding: 10px 15px; /* Innenabstand für mehr Klickfläche */
+            border: 2px solid #003399; /* Rahmen um jedes Element */
+            border-radius: 10px; /* Abgerundete Ecken für einen sanfteren Look */
+            display: block; /* Block-Display für bessere Margin-Anwendung */
+            text-decoration: none; /* Entfernt Unterstreichung der Links */
+            color: #000; /* Schriftfarbe der Links */
+            background-color: #ffffff; /* Hintergrundfarbe der Links */
+            width: 100%; /* Sicherstellen, dass Links die volle Breite nutzen */
+            box-sizing: border-box; /* Box-Modell berücksichtigen */
+        }
+        .nav-link-custom:hover {
+            background-color: #0074da; /* Hintergrundfarbe bei Hover */
+            color: #ffffff; /* Schriftfarbe bei Hover */
+            border-color: #003399; /* Rahmenfarbe bei Hover */
+        }
+
+        .navbar-brand img {
+            width: 150px; /* Größe des Logos anpassen */
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-light bg-light">
+        <div class="container-fluid">
+            <!-- Button für die Offcanvas-Navigation -->
+            <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <!-- Logo rechts -->
+            <a class="navbar-brand ms-auto" href="#">
+                <img src="images/sunrise-logo.png" alt="Logo" class="d-inline-block align-text-top" style="width: 150px;"> <!-- Größe des Logos anpassen -->
+            </a>
+        </div>
+    </nav>
+
+    <!-- Offcanvas-Navigation -->
+    <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+        <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Übersicht</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">
+            <ul class="navbar-nav w-100 m-0 p-0">
+                <li class="nav-item">
+                    <a class="nav-link nav-link-custom" href="#" onclick="loadContent('safetyAssuranceFramework')">1. Safety Assurance Framework</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link nav-link-custom" href="#" onclick="loadContent('section2')">2. Scenario Creation</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link nav-link-custom" href="#" onclick="loadContent('section3')">3. Scenario Formatting</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link nav-link-custom" href="#" onclick="loadContent('section4')">4. Scenario Storage</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link nav-link-custom" href="#" onclick="loadContent('section5')">5. Concrete Test Scenarios</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link nav-link-custom" href="#" onclick="loadContent('environmentAllocation')">6. Environment Allocation</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link nav-link-custom" href="#" onclick="loadContent('section7')">7. Test Execution</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link nav-link-custom" href="#" onclick="loadContent('section8')">8. Evaluation</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link nav-link-custom" href="#" onclick="loadContent('section9')">9. In-Service Monitoring</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <main id="main-content" class="container my-5">
+        
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-light text-center py-4">
+        <div class="container">
+            <p class="mb-0">© 2024 Meine Webseite. Alle Rechte vorbehalten.</p>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS und Abhängigkeiten -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
+
+    <script>
+        function loadContent(section) {
+            var xhr = new XMLHttpRequest();
+            xhr.open('GET', 'content/' + section + '.html', true);
+            xhr.onload = function() {
+                if (xhr.status >= 200 && xhr.status < 300) {
+                    document.getElementById('main-content').innerHTML = xhr.responseText;
+                } else {
+                    console.error('Fehler beim Laden des Inhalts:', xhr.statusText);
+                }
+            };
+            xhr.onerror = function() {
+                console.error('Netzwerkfehler');
+            };
+            xhr.send();
+        }
+    </script>
+</body>
+</html>
