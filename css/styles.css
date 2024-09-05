@@ -66,6 +66,39 @@
     margin-right: 10px; /* Add some spacing from the right edge */
 }
 
+/* Hover effect for the sidebar home button */
+.icon-container a:hover {
+    background-color: #6c757d; /* Grey background on hover */
+    color: white; /* White text color on hover */
+    border-radius: 4px; /* Optional: rounded corners for a better visual effect */
+    text-decoration: none; /* Remove underline if it's a link */
+    padding: 5px; /* Optional: padding to increase clickable area */
+}
+
+/* Initial styling for home button to match sidebar links */
+.icon-container a {
+    display: inline-block; /* Ensure the home button behaves like a block element */
+    padding: 5px; /* Add padding to match the clickable area of other sidebar items */
+    color: inherit; /* Inherit text color from parent, to match sidebar items */
+    transition: background-color 0.3s ease, color 0.3s ease; /* Smooth transition for hover effect */
+}
+
+/* Hover effect for the toggle button */
+#toggle-sidebar-icon:hover {
+    background-color: #6c757d; /* Grey background on hover */
+    color: white; /* White icon color on hover */
+    border-radius: 4px; /* Optional: rounded corners for a better visual effect */
+    cursor: pointer; /* Change cursor to pointer to indicate it's clickable */
+    padding: 5px; /* Optional: padding to increase clickable area */
+}
+
+/* Initial styling for toggle button to match sidebar links */
+#toggle-sidebar-icon {
+    padding: 5px; /* Add padding to match the clickable area of other sidebar items */
+    transition: background-color 0.3s ease, color 0.3s ease; /* Smooth transition for hover effect */
+    border-radius: 4px; /* Optional: rounded corners */
+}
+
 /* Additional spacing for sidebar items */
 .sidebar-nav {
     margin-top: 40px; /* Increase top margin to add spacing between icons and nav items */
