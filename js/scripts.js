@@ -13,7 +13,7 @@ const contentFiles = [
     'content/decide.html',
     'content/monitoring.html',
     'content/odd_requirements.html',
-    'content/audit.html'
+    'content/audit.html' // Last page in the list
 ];
 
 let currentIndex = 0; // Start with the overview page
@@ -28,7 +28,9 @@ function loadContent(file) {
             initializeTooltips();
             attachImageLoadEvent(); // Attach event to wait for image to load, if it exists
             attachHoverEvents(); // Attach hover events to image map areas
-            updateNavigationButtons();
+            updateCurrentIndex(file); // Synchronize currentIndex with the loaded file
+            updateNavigationButtons(); // Update navigation button states
+            updateActiveSidebar(file); // Update the active state in the sidebar
         } else {
             console.error('Error loading content:', xhr.statusText);
         }
@@ -37,6 +39,11 @@ function loadContent(file) {
         console.error('Network error');
     };
     xhr.send();
+}
+
+// Function to update currentIndex based on the loaded file
+function updateCurrentIndex(file) {
+    currentIndex = contentFiles.indexOf(file);
 }
 
 // Function to navigate between content files
@@ -57,6 +64,21 @@ function navigateContent(direction) {
 function updateNavigationButtons() {
     document.getElementById('prev-btn').disabled = currentIndex === 0;
     document.getElementById('next-btn').disabled = currentIndex === contentFiles.length - 1;
+}
+
+// Function to update active class on sidebar
+function updateActiveSidebar(file) {
+    // Remove active class from all sidebar links
+    document.querySelectorAll('.sidebar-nav .nav-link').forEach(function (link) {
+        link.classList.remove('active');
+    });
+
+    // Add active class to the clicked sidebar link
+    document.querySelectorAll('.sidebar-nav .nav-link').forEach(function (link) {
+        if (link.getAttribute('onclick').includes(file)) {
+            link.classList.add('active');
+        }
+    });
 }
 
 // Initialize content on page load

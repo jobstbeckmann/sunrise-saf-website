@@ -20,9 +20,11 @@
     padding: 10px 15px; /* Add padding for better spacing */
 }
 
-.sidebar .nav-link.active {
-    background-color: #6c757d; /* Darker grey for active state */
-    color: #ffffff;
+/* Custom active class styling for sidebar */
+.sidebar-nav .nav-link.active {
+    background-color: #6c757d !important; /* Grey background */
+    color: white; /* White text for contrast */
+    border-color: #6c757d; /* Optional: grey border to match */
 }
 
 .sidebar .nav-link:hover {
