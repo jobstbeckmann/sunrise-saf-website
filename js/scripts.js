@@ -4,8 +4,9 @@ function loadContent(file) {
     xhr.open('GET', file, true);
     xhr.onload = function() {
         if (xhr.status >= 200 && xhr.status < 300) {
-            document.getElementById('dynamic-content').innerHTML = xhr.responseText; // Only replace the dynamic content section
-            initializeTooltips(); // Reinitialize tooltips after loading content
+            document.getElementById('dynamic-content').innerHTML = xhr.responseText;
+            initializeTooltips();
+            attachImageLoadEvent(); // Attach event to wait for image to load, if it exists
         } else {
             console.error('Error loading content:', xhr.statusText);
         }
@@ -24,10 +25,59 @@ function initializeTooltips() {
     });
 }
 
+// Function to attach load event to image to ensure it is fully loaded
+function attachImageLoadEvent() {
+    var img = document.getElementById('map-image');
+    if (img) { // Only proceed if the image exists
+        if (img.complete) {
+            // If the image is already loaded
+            adjustImageMapToRelativeCoordinates();
+        } else {
+            // Wait for the image to load
+            img.addEventListener('load', adjustImageMapToRelativeCoordinates);
+        }
+    }
+}
+
+// Function to adjust image map coordinates using relative percentages
+function adjustImageMapToRelativeCoordinates() {
+    var img = document.getElementById('map-image');
+    if (!img) return; // Exit if the image does not exist
+
+    var originalWidth = img.naturalWidth;
+    var originalHeight = img.naturalHeight;
+    var currentWidth = img.width;
+    var currentHeight = img.height;
+
+    // Log the original and current dimensions of the image
+    console.log('Original Width:', originalWidth);
+    console.log('Original Height:', originalHeight);
+    console.log('Current Width:', currentWidth);
+    console.log('Current Height:', currentHeight);
+
+    var areas = document.querySelectorAll('#image-map area');
+
+    areas.forEach(function(area) {
+        var originalCoords = area.getAttribute('data-original-coords').split(',');
+        var newCoords = originalCoords.map(function(coord, index) {
+            if (index % 2 === 0) { // X coordinate
+                return ((coord / originalWidth) * currentWidth).toFixed(0);
+            } else { // Y coordinate
+                return ((coord / originalHeight) * currentHeight).toFixed(0);
+            }
+        });
+        area.setAttribute('coords', newCoords.join(','));
+    });
+}
+
 // Load default content on page load
 document.addEventListener('DOMContentLoaded', function() {
-    loadContent('content/text/main.html'); // Load default content on page load
-    initializeTooltips(); // Initialize tooltips on initial load
+    loadContent('content/text/main.html');
+    initializeTooltips();
+    window.addEventListener('resize', function() {
+        var img = document.getElementById('map-image');
+        if (img) adjustImageMapToRelativeCoordinates(); // Only adjust if the image exists
+    });
 });
 
 // Toggle sidebar visibility
