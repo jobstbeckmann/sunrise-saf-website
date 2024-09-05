@@ -69,6 +69,10 @@
     margin-top: 40px; /* Increase top margin to add spacing between icons and nav items */
 }
 
+.btn {
+    width: 100%;
+}
+
 /* Responsive adjustments */
 @media (max-width: 768px) {
     .sidebar {

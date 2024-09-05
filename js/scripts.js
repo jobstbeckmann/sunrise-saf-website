@@ -1,3 +1,23 @@
+// List of content files in order
+const contentFiles = [
+    'content/overview.html', // Default page to load first and for the home button
+    'content/framework.html',
+    'content/create.html',
+    'content/format.html',
+    'content/store.html',
+    'content/query_concretise.html',
+    'content/allocate.html',
+    'content/execute.html',
+    'content/coverage.html',
+    'content/test_evaluate.html',
+    'content/decide.html',
+    'content/monitoring.html',
+    'content/odd_requirements.html',
+    'content/audit.html'
+];
+
+let currentIndex = 0; // Start with the overview page
+
 // Function to load content dynamically into the dynamic content section
 function loadContent(file) {
     var xhr = new XMLHttpRequest();
@@ -8,6 +28,7 @@ function loadContent(file) {
             initializeTooltips();
             attachImageLoadEvent(); // Attach event to wait for image to load, if it exists
             attachHoverEvents(); // Attach hover events to image map areas
+            updateNavigationButtons();
         } else {
             console.error('Error loading content:', xhr.statusText);
         }
@@ -17,6 +38,36 @@ function loadContent(file) {
     };
     xhr.send();
 }
+
+// Function to navigate between content files
+function navigateContent(direction) {
+    currentIndex += direction;
+
+    // Check bounds
+    if (currentIndex < 0) {
+        currentIndex = 0; // Stay at the first page
+    } else if (currentIndex >= contentFiles.length) {
+        currentIndex = contentFiles.length - 1; // Stay at the last page
+    }
+
+    loadContent(contentFiles[currentIndex]);
+}
+
+// Update navigation buttons based on current index
+function updateNavigationButtons() {
+    document.getElementById('prev-btn').disabled = currentIndex === 0;
+    document.getElementById('next-btn').disabled = currentIndex === contentFiles.length - 1;
+}
+
+// Initialize content on page load
+document.addEventListener('DOMContentLoaded', function() {
+    loadContent(contentFiles[currentIndex]); // Load initial content
+    initializeTooltips();
+    window.addEventListener('resize', function() {
+        var img = document.getElementById('map-image');
+        if (img) adjustImageMapToRelativeCoordinates(); // Only adjust if the image exists
+    });
+});
 
 // Function to initialize Bootstrap tooltips
 function initializeTooltips() {
@@ -84,16 +135,6 @@ function adjustImageMapToRelativeCoordinates() {
         area.setAttribute('coords', newCoords.join(','));
     });
 }
-
-// Load default content on page load
-document.addEventListener('DOMContentLoaded', function() {
-    loadContent('content/text/main.html');
-    initializeTooltips();
-    window.addEventListener('resize', function() {
-        var img = document.getElementById('map-image');
-        if (img) adjustImageMapToRelativeCoordinates(); // Only adjust if the image exists
-    });
-});
 
 // Toggle sidebar visibility
 document.getElementById('toggle-sidebar-icon').addEventListener('click', function() {
