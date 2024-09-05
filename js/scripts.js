@@ -7,6 +7,7 @@ function loadContent(file) {
             document.getElementById('dynamic-content').innerHTML = xhr.responseText;
             initializeTooltips();
             attachImageLoadEvent(); // Attach event to wait for image to load, if it exists
+            attachHoverEvents(); // Attach hover events to image map areas
         } else {
             console.error('Error loading content:', xhr.statusText);
         }
@@ -30,13 +31,27 @@ function attachImageLoadEvent() {
     var img = document.getElementById('map-image');
     if (img) { // Only proceed if the image exists
         if (img.complete) {
-            // If the image is already loaded
             adjustImageMapToRelativeCoordinates();
         } else {
-            // Wait for the image to load
             img.addEventListener('load', adjustImageMapToRelativeCoordinates);
         }
     }
+}
+
+// Function to attach hover events to image map areas
+function attachHoverEvents() {
+    var areas = document.querySelectorAll('#image-map area');
+    var infoBox = document.getElementById('info-box');
+
+    areas.forEach(function(area) {
+        area.addEventListener('mouseover', function() {
+            var infoText = area.getAttribute('data-info');
+            infoBox.textContent = infoText;
+        });
+        area.addEventListener('mouseout', function() {
+            infoBox.textContent = "Hover over an area on the image to see more information here.";
+        });
+    });
 }
 
 // Function to adjust image map coordinates using relative percentages

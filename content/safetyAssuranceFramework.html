@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Interactive Image Map with Tooltips</title>
+    <title>Interactive Image Map with Text Box</title>
     
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -17,6 +17,13 @@
             height: auto;
             max-width: 100%;
         }
+        .info-box {
+            margin-top: 20px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            background-color: #f8f9fa;
+            min-height: 50px;
+        }
     </style>
 </head>
 <body>
@@ -27,21 +34,27 @@
             <div class="col-md-10 image-container">
                 <img src="images/sunrise.png" usemap="#image-map" alt="SUNRISE Safety Assurance Framework" class="img-fluid map-image" id="map-image">
                 
-                <!-- Image Map with Bootstrap Tooltips -->
+                <!-- Image Map -->
                 <map name="image-map" id="image-map">
-                    <area target="" alt="Create" title="Create" href="#" coords="109,397,74" shape="circle" data-original-coords="109,397,74" data-bs-toggle="tooltip" data-bs-placement="top">
-                    <area target="" alt="Format" title="Format" href="#" coords="310,399,70" shape="circle" data-original-coords="310,399,70" data-bs-toggle="tooltip" data-bs-placement="top">
-                    <area target="" alt="Store" title="Store" href="#" coords="508,399,72" shape="circle" data-original-coords="508,399,72" data-bs-toggle="tooltip" data-bs-placement="top">
-                    <area target="" alt="QueryConcretise" title="QueryConcretise" href="#" coords="767,399,73" shape="circle" data-original-coords="767,399,73" data-bs-toggle="tooltip" data-bs-placement="top">
-                    <area target="" alt="Allocate" title="Allocate" href="#" coords="971,401,71" shape="circle" data-original-coords="971,401,71" data-bs-toggle="tooltip" data-bs-placement="top">
-                    <area target="" alt="Execute" title="Execute" href="#" coords="1177,400,72" shape="circle" data-original-coords="1177,400,72" data-bs-toggle="tooltip" data-bs-placement="top">
-                    <area target="" alt="Coverage" title="Coverage" href="#" coords="1413,324,71" shape="circle" data-original-coords="1413,324,71" data-bs-toggle="tooltip" data-bs-placement="top">
-                    <area target="" alt="TestEvaluate" title="TestEvaluate" href="#" coords="1413,478,73" shape="circle" data-original-coords="1413,478,73" data-bs-toggle="tooltip" data-bs-placement="top">
-                    <area target="" alt="Decide" title="Decide" href="#" coords="1620,396,73" shape="circle" data-original-coords="1620,396,73" data-bs-toggle="tooltip" data-bs-placement="top">
-                    <area target="" alt="InServiceMonitoringAndReporting" title="InServiceMonitoringAndReporting" href="#" coords="939,643,1382,723" shape="rect" data-original-coords="939,643,1382,723" data-bs-toggle="tooltip" data-bs-placement="top">
-                    <area target="" alt="ODDBehaviourExternalRequirementsTestObjectives" title="ODDBehaviourExternalRequirementsTestObjectives" href="#" coords="3,776,1710,869" shape="rect" data-original-coords="3,776,1710,869" data-bs-toggle="tooltip" data-bs-placement="top">
-                    <area target="" alt="Audit" title="Audit" href="#" coords="2,2,1709,75" shape="rect" data-original-coords="2,2,1709,75" data-bs-toggle="tooltip" data-bs-placement="top">
+                    <area target="" alt="Create" title="Create" href="#" coords="109,397,74" shape="circle" data-original-coords="109,397,74" data-info="Information about Create">
+                    <area target="" alt="Format" title="Format" href="#" coords="310,399,70" shape="circle" data-original-coords="310,399,70" data-info="Information about Format">
+                    <area target="" alt="Store" title="Store" href="#" coords="508,399,72" shape="circle" data-original-coords="508,399,72" data-info="Information about Store">
+                    <area target="" alt="QueryConcretise" title="QueryConcretise" href="#" coords="767,399,73" shape="circle" data-original-coords="767,399,73" data-info="Information about QueryConcretise">
+                    <area target="" alt="Allocate" title="Allocate" href="#" coords="971,401,71" shape="circle" data-original-coords="971,401,71" data-info="Information about Allocate">
+                    <area target="" alt="Execute" title="Execute" href="#" coords="1177,400,72" shape="circle" data-original-coords="1177,400,72" data-info="Information about Execute">
+                    <area target="" alt="Coverage" title="Coverage" href="#" coords="1413,324,71" shape="circle" data-original-coords="1413,324,71" data-info="Information about Coverage">
+                    <area target="" alt="TestEvaluate" title="TestEvaluate" href="#" coords="1413,478,73" shape="circle" data-original-coords="1413,478,73" data-info="Information about TestEvaluate">
+                    <area target="" alt="Decide" title="Decide" href="#" coords="1620,396,73" shape="circle" data-original-coords="1620,396,73" data-info="Information about Decide">
+                    <area target="" alt="InServiceMonitoringAndReporting" title="InServiceMonitoringAndReporting" href="#" coords="939,643,1382,723" shape="rect" data-original-coords="939,643,1382,723" data-info="Information about In-Service Monitoring and Reporting">
+                    <area target="" alt="ODDBehaviourExternalRequirementsTestObjectives" title="ODDBehaviourExternalRequirementsTestObjectives" href="#" coords="3,776,1710,869" shape="rect" data-original-coords="3,776,1710,869" data-info="Information about ODD Behaviour and External Requirements Test Objectives">
+                    <area target="" alt="Audit" title="Audit" href="#" coords="2,2,1709,75" shape="rect" data-original-coords="2,2,1709,75" data-info="Information about Audit">
                 </map>
+            </div>
+        </div>
+        <!-- Information Box -->
+        <div class="row justify-content-center">
+            <div class="col-md-10">
+                <div id="info-box" class="info-box">Hover over an area on the image to see more information here.</div>
             </div>
         </div>
     </div>

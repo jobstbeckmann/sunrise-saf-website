@@ -48,6 +48,7 @@
     left: 20px; /* Fixed position on the top left of the sidebar */
     z-index: 1001;
     cursor: pointer;
+    margin-top: 4px; /* Align with home button*/
 }
 
 /* Icon container inside the sidebar */
