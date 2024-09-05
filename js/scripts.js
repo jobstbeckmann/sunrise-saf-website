@@ -165,8 +165,15 @@ document.getElementById('toggle-sidebar-icon').addEventListener('click', functio
 
     if (window.innerWidth <= 768) {
         // For smaller screens, toggle the height of the sidebar
-        sidebar.classList.toggle('hidden');
-        mainContent.classList.toggle('expanded');
+        if (sidebar.classList.contains('hidden')) {
+            sidebar.classList.remove('hidden');
+            mainContent.classList.remove('expanded');
+            // Scroll the page to the top when the sidebar is opened
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        } else {
+            sidebar.classList.add('hidden');
+            mainContent.classList.add('expanded');
+        }
     } else {
         // For larger screens, toggle the sidebar to slide left
         if (sidebar.classList.contains('hidden')) {
