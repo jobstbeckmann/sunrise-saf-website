@@ -1,124 +1,131 @@
 /* Sidebar styling */
 .sidebar {
-    min-width: 300px; /* Minimum width to accommodate text without wrapping */
+    min-width: 300px;
     height: 100vh;
-    background-color: #f8f9fa; /* Light grey background color */
-    padding: 20px; /* Add padding for the content inside the sidebar */
+    background-color: #f8f9fa;
+    padding: 20px;
     position: fixed;
     overflow-y: auto;
-    transition: margin 0.3s; /* Smooth transition for hide/show */
+    transition: transform 0.3s ease, max-height 0.3s ease;
+    left: 0;
+    top: 0;
+    z-index: 1000;
 }
 
+/* Home button styling (positioned inside the sidebar) */
+.icon-container {
+    display: flex;
+    justify-content: flex-end; /* Align home button to the right */
+    align-items: center;
+    margin-bottom: 10px; /* Adjust to move it up */
+    margin-top: -10px; /* Move the home button up by 10px */
+}
+
+.icon-container a {
+    color: #000000; /* Set home button color to black */
+    background-color: #f8f9fa; /* Same background as sidebar */
+    text-decoration: none; /* Remove underline */
+    padding: 10px;
+    border-radius: 4px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Hover effect for home button */
+.icon-container a:hover {
+    background-color: #6c757d; /* Darker grey on hover */
+    color: white; /* White text on hover */
+}
+
+/* Sidebar hidden state for larger screens */
 .sidebar.hidden {
-    margin-left: -300px; /* Hide sidebar by moving it out of view */
+    transform: translateX(-100%); /* Hide the sidebar by moving it to the left on large screens */
 }
 
+/* Sidebar styling for small screens */
+@media (max-width: 768px) {
+    .sidebar {
+        width: 100%;
+        height: auto;
+        position: relative;
+        max-height: 100vh;
+        overflow: hidden;
+        transform: none;
+        transition: max-height 0.3s ease;
+    }
+
+    .sidebar.hidden {
+        max-height: 0;
+        overflow: hidden;
+    }
+
+    .main-content {
+        margin-left: 0 !important;
+        transition: margin 0.3s ease;
+    }
+
+    .main-content.expanded {
+        margin-top: 0;
+    }
+}
+
+/* Sidebar navigation link styling */
 .sidebar .nav-link {
-    color: #000000; /* Dark text color for better contrast */
+    color: #000000;
     margin-bottom: 10px;
-    white-space: nowrap; /* Prevent text wrapping */
-    padding: 10px 15px; /* Add padding for better spacing */
+    white-space: nowrap;
+    padding: 10px 15px;
 }
 
 /* Custom active class styling for sidebar */
 .sidebar-nav .nav-link.active {
-    background-color: #6c757d !important; /* Grey background */
-    color: white; /* White text for contrast */
-    border-color: #6c757d; /* Optional: grey border to match */
+    background-color: #6c757d !important;
+    color: white;
+    border-color: #6c757d;
 }
 
+/* Hover effect for sidebar navigation links */
 .sidebar .nav-link:hover {
-    background-color: #5a6268; /* Darker shade of grey for hover state */
+    background-color: #5a6268;
     color: #ffffff;
 }
 
 /* Main content styling */
 .main-content {
-    margin-left: 300px; /* Adjust margin to account for sidebar width */
+    margin-left: 300px;
     padding: 20px;
-    transition: margin 0.3s; /* Smooth transition for content when sidebar is hidden */
+    transition: margin 0.3s ease;
 }
 
 .main-content.expanded {
-    margin-left: 0; /* Expand content area when sidebar is hidden */
+    margin-left: 0;
 }
 
 /* Toggle icon styling */
 #toggle-sidebar-icon {
     position: fixed;
     top: 20px;
-    left: 20px; /* Fixed position on the top left of the sidebar */
+    left: 20px;
     z-index: 1001;
     cursor: pointer;
-    margin-top: 4px; /* Align with home button*/
-}
-
-/* Icon container inside the sidebar */
-.icon-container {
-    display: flex;
-    justify-content: flex-end; /* Align home icon to the right */
-    align-items: center;
-}
-
-.icon-container a {
-    color: inherit; /* Inherit color to keep consistent with other icon */
-    text-decoration: none; /* Remove underline */
-    margin-right: 10px; /* Add some spacing from the right edge */
-}
-
-/* Hover effect for the sidebar home button */
-.icon-container a:hover {
-    background-color: #6c757d; /* Grey background on hover */
-    color: white; /* White text color on hover */
-    border-radius: 4px; /* Optional: rounded corners for a better visual effect */
-    text-decoration: none; /* Remove underline if it's a link */
-    padding: 5px; /* Optional: padding to increase clickable area */
-}
-
-/* Initial styling for home button to match sidebar links */
-.icon-container a {
-    display: inline-block; /* Ensure the home button behaves like a block element */
-    padding: 5px; /* Add padding to match the clickable area of other sidebar items */
-    color: inherit; /* Inherit text color from parent, to match sidebar items */
-    transition: background-color 0.3s ease, color 0.3s ease; /* Smooth transition for hover effect */
+    margin-top: 4px;
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 /* Hover effect for the toggle button */
 #toggle-sidebar-icon:hover {
-    background-color: #6c757d; /* Grey background on hover */
-    color: white; /* White icon color on hover */
-    border-radius: 4px; /* Optional: rounded corners for a better visual effect */
-    cursor: pointer; /* Change cursor to pointer to indicate it's clickable */
-    padding: 5px; /* Optional: padding to increase clickable area */
-}
-
-/* Initial styling for toggle button to match sidebar links */
-#toggle-sidebar-icon {
-    padding: 5px; /* Add padding to match the clickable area of other sidebar items */
-    transition: background-color 0.3s ease, color 0.3s ease; /* Smooth transition for hover effect */
-    border-radius: 4px; /* Optional: rounded corners */
+    background-color: #6c757d;
+    color: white;
+    border-radius: 4px;
+    cursor: pointer;
+    padding: 5px;
 }
 
 /* Additional spacing for sidebar items */
 .sidebar-nav {
-    margin-top: 40px; /* Increase top margin to add spacing between icons and nav items */
+    margin-top: 40px;
 }
 
+/* Button styling */
 .btn {
     width: 100%;
-}
-
-/* Responsive adjustments */
-@media (max-width: 768px) {
-    .sidebar {
-        width: 100%;
-        height: auto;
-        position: relative;
-    }
-    .main-content {
-        margin-left: 0;
-    }
-    #toggle-sidebar-icon {
-        left: 20px; /* Adjust position on smaller screens */
-    }
 }

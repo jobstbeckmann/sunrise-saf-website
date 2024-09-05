@@ -163,6 +163,41 @@ document.getElementById('toggle-sidebar-icon').addEventListener('click', functio
     var sidebar = document.querySelector('.sidebar');
     var mainContent = document.querySelector('.main-content');
 
-    sidebar.classList.toggle('hidden');
-    mainContent.classList.toggle('expanded');
+    if (window.innerWidth <= 768) {
+        // For smaller screens, toggle the height of the sidebar
+        sidebar.classList.toggle('hidden');
+        mainContent.classList.toggle('expanded');
+    } else {
+        // For larger screens, toggle the sidebar to slide left
+        if (sidebar.classList.contains('hidden')) {
+            sidebar.style.transform = 'translateX(0)'; // Show sidebar
+            mainContent.style.marginLeft = '300px'; // Set the content margin
+            sidebar.classList.remove('hidden');
+        } else {
+            sidebar.style.transform = 'translateX(-100%)'; // Hide sidebar
+            mainContent.style.marginLeft = '0'; // Remove content margin
+            sidebar.classList.add('hidden');
+        }
+    }
+});
+
+// Adjust sidebar on window resize
+window.addEventListener('resize', function() {
+    var sidebar = document.querySelector('.sidebar');
+    var mainContent = document.querySelector('.main-content');
+
+    if (window.innerWidth > 768) {
+        // On larger screens, ensure the sidebar is properly positioned
+        if (!sidebar.classList.contains('hidden')) {
+            sidebar.style.transform = 'translateX(0)'; // Show sidebar
+            mainContent.style.marginLeft = '300px'; // Set the content margin
+        } else {
+            sidebar.style.transform = 'translateX(-100%)'; // Keep it hidden if hidden before
+            mainContent.style.marginLeft = '0'; // Keep content expanded
+        }
+    } else {
+        // On smaller screens, ensure the sidebar behaves as expected
+        sidebar.style.transform = ''; // Reset any inline transform styles
+        mainContent.style.marginLeft = '0'; // Remove margin
+    }
 });
