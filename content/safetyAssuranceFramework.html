@@ -3,41 +3,60 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Image Map mit Tippy.js</title>
-    <link href="https://unpkg.com/tippy.js@6/themes/light.css" rel="stylesheet">
-    <script src="https://unpkg.com/tippy.js@6/dist/tippy-bundle.umd.min.js"></script>
+    <title>Interactive Image Map with Tooltips</title>
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
     <style>
-        .tippy-tooltip {
-            background-color: #333;
-            color: #fff;
-            padding: 5px;
-            border-radius: 3px;
-            font-size: 12px;
+        .image-container {
+            position: relative;
+        }
+        .map-image {
+            width: 100%;
+            height: auto;
+            max-width: 100%; /* Ensures the image scales properly */
         }
     </style>
 </head>
 <body>
-    <h1>Bild mit Tippy.js und Tooltips</h1>
-    <img src="/images/sunrise.png" usemap="#image-map" alt="Bildbeschreibung" id="map-image">
 
-    <map name="image-map">
-        <area shape="rect" coords="34,44,270,350" href="#" alt="Bereich 1" data-tippy-content="Tooltip für Bereich 1">
-        <area shape="circle" coords="130,136,60" href="#" alt="Bereich 2" data-tippy-content="Tooltip für Bereich 2">
-        <area shape="poly" coords="50,100,200,200,300,150" href="#" alt="Bereich 3" data-tippy-content="Tooltip für Bereich 3">
-    </map>
+    <!-- Bootstrap Container -->
+    <div class="container my-5">
+        <!-- Responsive Image with Bootstrap Classes -->
+        <div class="row justify-content-center">
+            <div class="col-md-10 image-container">
+                <img src="images/sunrise.png" usemap="#image-map" alt="SUNRISE Safety Assurance Framework" class="img-fluid map-image" id="map-image">
+                
+                <!-- Image Map with Bootstrap Tooltips -->
+                <map name="image-map">
+                    <area target="" alt="Create" title="Create" href="#" coords="109,397,74" shape="circle" data-bs-toggle="tooltip" data-bs-placement="top">
+                    <area target="" alt="Format" title="Format" href="#" coords="310,399,70" shape="circle" data-bs-toggle="tooltip" data-bs-placement="top">
+                    <area target="" alt="Store" title="Store" href="#" coords="508,399,72" shape="circle" data-bs-toggle="tooltip" data-bs-placement="top">
+                    <area target="" alt="QueryConcretise" title="QueryConcretise" href="#" coords="767,399,73" shape="circle" data-bs-toggle="tooltip" data-bs-placement="top">
+                    <area target="" alt="Allocate" title="Allocate" href="#" coords="971,401,71" shape="circle" data-bs-toggle="tooltip" data-bs-placement="top">
+                    <area target="" alt="Execute" title="Execute" href="#" coords="1177,400,72" shape="circle" data-bs-toggle="tooltip" data-bs-placement="top">
+                    <area target="" alt="Coverage" title="Coverage" href="#" coords="1413,324,71" shape="circle" data-bs-toggle="tooltip" data-bs-placement="top">
+                    <area target="" alt="TestEvaluate" title="TestEvaluate" href="#" coords="1413,478,73" shape="circle" data-bs-toggle="tooltip" data-bs-placement="top">
+                    <area target="" alt="Decide" title="Decide" href="#" coords="1620,396,73" shape="circle" data-bs-toggle="tooltip" data-bs-placement="top">
+                    <area target="" alt="InServiceMonitoringAndReporting" title="InServiceMonitoringAndReporting" href="#" coords="939,643,1382,723" shape="rect" data-bs-toggle="tooltip" data-bs-placement="top">
+                    <area target="" alt="ODDBehaviourExternalRequirementsTestObjectives" title="ODDBehaviourExternalRequirementsTestObjectives" href="#" coords="3,776,1710,869" shape="rect" data-bs-toggle="tooltip" data-bs-placement="top">
+                    <area target="" alt="Audit" title="Audit" href="#" coords="2,2,1709,75" shape="rect" data-bs-toggle="tooltip" data-bs-placement="top">
+                </map>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS and Dependencies -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
+    <!-- Image Map Resizer -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/image-map-resizer/1.0.10/js/imageMapResizer.min.js"></script>
 
     <script>
+        // Initialize image map resizer
         document.addEventListener('DOMContentLoaded', function() {
-            console.log('Document loaded');
-            tippy('area', {
-                content: (reference) => {
-                    console.log('Setting content for:', reference);
-                    return reference.getAttribute('data-tippy-content');
-                },
-                placement: 'top',
-                animation: 'fade',
-                theme: 'light'
-            });
+            imageMapResize();
         });
     </script>
 </body>

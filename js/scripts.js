@@ -5,6 +5,7 @@ function loadContent(file) {
     xhr.onload = function() {
         if (xhr.status >= 200 && xhr.status < 300) {
             document.getElementById('dynamic-content').innerHTML = xhr.responseText; // Only replace the dynamic content section
+            initializeTooltips(); // Reinitialize tooltips after loading content
         } else {
             console.error('Error loading content:', xhr.statusText);
         }
@@ -15,9 +16,18 @@ function loadContent(file) {
     xhr.send();
 }
 
+// Function to initialize Bootstrap tooltips
+function initializeTooltips() {
+    var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
+    tooltipTriggerList.forEach(function (tooltipTriggerEl) {
+        new bootstrap.Tooltip(tooltipTriggerEl);
+    });
+}
+
 // Load default content on page load
 document.addEventListener('DOMContentLoaded', function() {
-    loadContent('overview.html'); // Load default content on page load
+    loadContent('content/text/main.html'); // Load default content on page load
+    initializeTooltips(); // Initialize tooltips on initial load
 });
 
 // Toggle sidebar visibility
