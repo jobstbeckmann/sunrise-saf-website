@@ -1,62 +1,224 @@
 <!DOCTYPE html>
 <html lang="de">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Interactive Image Map with Text Box</title>
-    
+
     <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
 
     <style>
-        .image-container {
-            position: relative;
-        }
-        .map-image {
-            width: 100%;
-            height: auto;
-            max-width: 100%;
-        }
-        .info-box {
-            margin-top: 20px;
-            padding: 10px;
-            border: 1px solid #ddd;
-            background-color: #f8f9fa;
-            min-height: 50px;
-        }
+      .image-container {
+        position: relative;
+      }
+      .map-image {
+        width: 100%;
+        height: auto;
+        max-width: 100%;
+      }
+      .info-box {
+        margin-top: 20px;
+        padding: 10px;
+        border: 1px solid #ddd;
+        background-color: #f8f9fa;
+        min-height: 50px;
+      }
     </style>
-</head>
-<body>
-
+  </head>
+  <body>
+    <div class="container mt-5">
+      <section>
+        <div class="row">
+          <div class="col-lg-12">
+            <h2>Interactive Framework</h2>
+          </div>
+        </div>
+      </section>
+    </div>
     <!-- Bootstrap Container -->
     <div class="container my-5">
-        <div class="row justify-content-center">
-            <div class="col-md-10 image-container">
-                <img src="images/sunrise.png" usemap="#image-map" alt="SUNRISE Safety Assurance Framework" class="img-fluid map-image" id="map-image">
-                
-                <!-- Image Map -->
-                <map name="image-map" id="image-map">
-                    <area target="" alt="Create" title="Create" href="#" onclick="loadContent('content/create.html'); return false;" coords="109,397,74" shape="circle" data-original-coords="109,397,74" data-info="Information about Create">
-                    <area target="" alt="Format" title="Format" href="#" onclick="loadContent('content/format.html'); return false;" coords="310,399,70" shape="circle" data-original-coords="310,399,70" data-info="Information about Format">
-                    <area target="" alt="Store" title="Store" href="#" onclick="loadContent('content/store.html'); return false;" coords="508,399,72" shape="circle" data-original-coords="508,399,72" data-info="Information about Store">
-                    <area target="" alt="QueryConcretise" title="QueryConcretise" href="#" onclick="loadContent('content/query.html'); return false;" coords="767,399,73" shape="circle" data-original-coords="767,399,73" data-info="Information about QueryConcretise">
-                    <area target="" alt="Allocate" title="Allocate" href="#" onclick="loadContent('content/allocate.html'); return false;" coords="971,401,71" shape="circle" data-original-coords="971,401,71" data-info="Information about Allocate">
-                    <area target="" alt="Execute" title="Execute" href="#" onclick="loadContent('content/execute.html'); return false;" coords="1177,400,72" shape="circle" data-original-coords="1177,400,72" data-info="Information about Execute">
-                    <area target="" alt="Coverage" title="Coverage" href="#" onclick="loadContent('content/coverage.html'); return false;" coords="1413,324,71" shape="circle" data-original-coords="1413,324,71" data-info="Information about Coverage">
-                    <area target="" alt="TestEvaluate" title="TestEvaluate" href="#" onclick="loadContent('content/testEvaluate.html'); return false;" coords="1413,478,73" shape="circle" data-original-coords="1413,478,73" data-info="Information about TestEvaluate">
-                    <area target="" alt="Decide" title="Decide" href="#" onclick="loadContent('content/decide.html'); return false;" coords="1620,396,73" shape="circle" data-original-coords="1620,396,73" data-info="Information about Decide">
-                    <area target="" alt="InServiceMonitoringAndReporting" title="InServiceMonitoringAndReporting" href="#" onclick="loadContent('content/monitoring.html'); return false;" coords="939,643,1382,723" shape="rect" data-original-coords="939,643,1382,723" data-info="Information about In-Service Monitoring and Reporting">
-                    <area target="" alt="ODDBehaviourExternalRequirementsTestObjectives" title="ODDBehaviourExternalRequirementsTestObjectives" href="#" onclick="loadContent('content/oddRequirements.html'); return false;" coords="3,776,1710,869" shape="rect" data-original-coords="3,776,1710,869" data-info="Information about ODD Behaviour and External Requirements Test Objectives">
-                    <area target="" alt="Audit" title="Audit" href="#" onclick="loadContent('content/audit.html'); return false;" coords="2,2,1709,75" shape="rect" data-original-coords="2,2,1709,75" data-info="Information about Audit">
-                </map>
-            </div>
+      <div class="row justify-content-center">
+        <div class="col-md-10 image-container">
+          <img
+            src="images/sunrise.png"
+            usemap="#image-map"
+            alt="SUNRISE Safety Assurance Framework"
+            class="img-fluid map-image"
+            id="map-image"
+          />
+
+          <!-- Image Map -->
+          <map name="image-map" id="image-map">
+            <area
+              target=""
+              alt="Create"
+              title="Create"
+              href="#"
+              onclick="loadContent('content/create.html'); return false;"
+              coords="109,397,74"
+              shape="circle"
+              data-original-coords="109,397,74"
+              data-info="Scenario creation is a critical component of the Safety Assurance Framework. Scenarios can be developed using two main approaches: data-based and knowledge-based. These methods are essential for generating a diverse set of test scenarios to evaluate the safety and performance of automated driving systems."
+            />
+            <area
+              target=""
+              alt="Format"
+              title="Format"
+              href="#"
+              onclick="loadContent('content/format.html'); return false;"
+              coords="310,399,70"
+              shape="circle"
+              data-original-coords="310,399,70"
+              data-info="Scenario formatting is typically managed by individual scenario databases (SCDBs). However, for seamless integration into a federated system, there are certain requirements that must be met. These include ensuring that scenarios adhere to a common format, making them both machine-readable and human-readable."
+            />
+            <area
+              target=""
+              alt="Store"
+              title="Store"
+              href="#"
+              onclick="loadContent('content/store.html'); return false;"
+              coords="508,399,72"
+              shape="circle"
+              data-original-coords="508,399,72"
+              data-info="Scenario storage involves two key components: connections to
+              individual Scenario Databases (SCDBs) and the SUNRISE federated
+              layer. This is where the outcomes of the SUNRISE project are
+              incorporated, starting with the integration and requirements of
+              the federated system."
+            />
+            <area
+              target=""
+              alt="QueryConcretise"
+              title="QueryConcretise"
+              href="#"
+              onclick="loadContent('content/query_concretise.html'); return false;"
+              coords="767,399,73"
+              shape="circle"
+              data-original-coords="767,399,73"
+              data-info="The Query and Concretise component of the Safety Assurance
+              Framework serves two main functions: retrieving scenarios from the
+              SUNRISE federated layer and combining them with testing objectives
+              and other external requirements to create individual test cases."
+            />
+            <area
+              target=""
+              alt="Allocate"
+              title="Allocate"
+              href="#"
+              onclick="loadContent('content/allocate.html'); return false;"
+              coords="971,401,71"
+              shape="circle"
+              data-original-coords="971,401,71"
+              data-info="This block is in charge of distributing which execution environment will run which scenarios."
+            />
+            <area
+              target=""
+              alt="Execute"
+              title="Execute"
+              href="#"
+              onclick="loadContent('content/execute.html'); return false;"
+              coords="1177,400,72"
+              shape="circle"
+              data-original-coords="1177,400,72"
+              data-info="This block includes the actual execution of the concrete test scenario within an allocated test
+              environment."
+            />
+            <area
+              target=""
+              alt="Coverage"
+              title="Coverage"
+              href="#"
+              onclick="loadContent('content/coverage.html'); return false;"
+              coords="1413,324,71"
+              shape="circle"
+              data-original-coords="1413,324,71"
+              data-info="Coverage Analysis involves assessing test cases results against coverage goals at both the
+              test suite and logical scenario levels to determine the need for additional testing."
+            />
+            <area
+              target=""
+              alt="TestEvaluate"
+              title="TestEvaluate"
+              href="#"
+              onclick="loadContent('content/testEvaluate.html'); return false;"
+              coords="1413,478,73"
+              shape="circle"
+              data-original-coords="1413,478,73"
+              data-info="Test Evaluation involves reviewing results from individual test cases to ascertain the level of
+              success of an individual test."
+            />
+            <area
+              target=""
+              alt="Decide"
+              title="Decide"
+              href="#"
+              onclick="loadContent('content/decide.html'); return false;"
+              coords="1620,396,73"
+              shape="circle"
+              data-original-coords="1620,396,73"
+              data-info="Information about Decide"
+            />
+            <area
+              target=""
+              alt="InServiceMonitoringAndReporting"
+              title="InServiceMonitoringAndReporting"
+              href="#"
+              onclick="loadContent('content/monitoring.html'); return false;"
+              coords="939,643,1382,723"
+              shape="rect"
+              data-original-coords="939,643,1382,723"
+              data-info="The “In-Service Monitoring and Reporting” component occurs during SUT operation, with
+                    continuous monitoring by the manufacturer and, if applicable, the fleet operator for purposes
+                    of continual safety assessment and improvement. The “In-Service Monitoring and Reporting”
+                    component should also check whether the assessment before the operation is done
+                    adequately."
+            />
+            <area
+              target=""
+              alt="ODDBehaviourExternalRequirementsTestObjectives"
+              title="ODDBehaviourExternalRequirementsTestObjectives"
+              href="#"
+              onclick="loadContent('content/odd_requirements.html'); return false;"
+              coords="3,776,1710,869"
+              shape="rect"
+              data-original-coords="3,776,1710,869"
+              data-info="The inputs to the Safety Assurance Framework (SAF) can be
+                    categorized into several key components: Operational Design Domain
+                    (ODD), system behavior, external requirements, and test
+                    objectives. These inputs include essential information such as the
+                    ODD description, system requirements, the system under test (SUT),
+                    variables to be measured during test execution, pass/fail criteria
+                    for successful testing, and monitoring requirements."
+            />
+            <area
+              target=""
+              alt="Audit"
+              title="Audit"
+              href="#"
+              onclick="loadContent('content/audit.html'); return false;"
+              coords="2,2,1709,75"
+              shape="rect"
+              data-original-coords="2,2,1709,75"
+              data-info="The “Audit” component ensures that the manufacturer has proper processes in place for
+                    operational and functional safety throughout the system's development and lifecycle,
+                    confirming the safety of the system's design and sufficient validation before market
+                    introduction."
+            />
+          </map>
         </div>
-        <!-- Information Box -->
-        <div class="row justify-content-center">
-            <div class="col-md-10">
-                <div id="info-box" class="info-box">Hover over an area on the image to see more information here.</div>
-            </div>
+      </div>
+      <!-- Information Box -->
+      <div class="row justify-content-center">
+        <div class="col-md-10">
+          <div id="info-box" class="info-box">
+            Hover over an area on the image to see more information here.
+          </div>
         </div>
+      </div>
     </div>
 
     <!-- Bootstrap JS and Dependencies -->
@@ -64,5 +226,5 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
     <!-- Custom JS -->
     <script src="js/scripts.js"></script>
-</body>
+  </body>
 </html>
